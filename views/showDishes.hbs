@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodies Foods</title>
+
+</head>
+
+<body>
+    {{>navbar loginUser=loginUser}}
+
+    <section class="container-fluid">
+
+        <div class="container">
+            <form action="/searchFood" method="post">
+                <div class="row search-panel">
+                    <div class="col-md-5 offset-md-3 mt-1">
+                        <input value="{{searchKey}}" placeholder="Serach food here,vegeterian burgur"
+                            class="form-control" type="text" name="foodSearch" id="">
+                    </div>
+                    <div class="col-md-1 text-center mt-1">
+                        <button type="submit" class="white-btn2">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="container">
+            <div class="row my-2">
+                {{#each foods}}
+                <div class="col-md-4 my-5">
+                    <div class="card ">
+                        <img style="height:210px" src="/static/dishImage/{{this.photo}}" class="img-fluid mb-2" alt="">
+                        <h4>{{this.dname}}</h4>
+                        <p class="text-color">Time : {{this.dtime}} Minutes | Serve {{this.dserve}}</p>
+                        <h2 class="primary-color mb-3"> <i class="fa fa-usd"></i>{{#discount this.dprice
+                            this.ddiscount}}{{/discount}} <del class="text-muted"><i
+                                    class="fa fa-usd"></i>{{this.dprice}}</del></h2>
+                        <div>
+                            <button onclick="addFoodToBasket('{{this._id}}','{{this.dname}}','{{this.dprice}}','{{this.photo}}' )" class="main-btn">Add To Basket</button>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+
+
+
+            <nav aria-label="Page navigation example " class="mt-3 mb-5">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item">
+                        <a class="page-link {{#ifprev currentPage}}{{/ifprev}}" href="/foods/{{#prevPage currentPage}}{{/prevPage}}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    {{#times count}}
+                    <li class="page-item"><a class="page-link" href="/foods/{{this}}">{{this}}</a></li>
+                    {{/times}}
+                    <li class="page-item">
+                        <a class="page-link {{#ifnext currentPage count}}{{/ifnext}}" href="/foods/{{#nextPage currentPage}}{{/nextPage}}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+
+        </div>
+
+
+    </section>
+
+
+</body>
+
+</html>

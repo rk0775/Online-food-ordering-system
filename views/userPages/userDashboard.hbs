@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {{> navbar loginUser=loginUser}}
+    <section>
+        <div class="container-fluid pb-5">
+            {{> userBar}}
+            <div class="container userSection">
+                <div class="row">
+                    <div class="col-md-3 offset-md-3">
+                        <div class="text-center">
+                            <img class="img-fluid" src="/static/image/review/review-1.jpg"
+                                alt="">
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card py-md-5 px-md-5 px-1">
+
+                            <div class="row ">
+                                <div class="col-md-4">
+                                    <h4 class="text-muted">Name : </h4>
+                                </div>
+                                <div class="col-md-8">
+                                    <h4 class="text-muted">{{loginUser.name}} </h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="text-muted">Email : </h4>
+                                </div>
+                                <div class="col-md-8">
+                                    <h4 class="text-muted">{{loginUser.email}} </h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="text-muted">Password : </h4>
+                                </div>
+                                <div class="col-md-8">
+                                    <h4 class="text-muted">{{loginUser.password}} </h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="text-muted">Number : </h4>
+                                </div>
+                                <div class="col-md-8">
+                                    <h4 class="text-muted">{{loginUser.phone}} </h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="text-muted">Adreass : </h4>
+                                </div>
+                                <div class="col-md-8">
+                                    <h4 class="text-muted">{{loginUser.adreass}} </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

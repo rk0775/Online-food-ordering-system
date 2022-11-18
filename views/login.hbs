@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {{>navbar}}
+    <section class="container-fluid">
+        <div class="register-banner ">
+            <div class="container">
+                <div class="row mb-5 pb-5">
+                    <div class="col-md-6 mt-5 mb-5">
+                        <div class="register-form">
+                            <div class="text-center">
+                                <h2 class="primary-color">Login Here...</h2>
+                            </div>
+                            <form class="form" action="/loginUser" method="post">
+                                <div class="mx-2">
+                                    <input type="text"  class="form-control mt-3" name="email" id="" placeholder="Enter the email">
+                                    <input  type="password"  class="form-control mt-3" name="password" id="" placeholder="Enter the passowrd">
+                                </div>
+
+                                <div class="text-right">
+                                    <button type="submit" class="main-btn mt-3 mx-4 mb-1">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
+{{#if invalid}}
+<script>
+     Swal.fire({
+        title: 'Something is wrong!',
+        text: 'Invalid email or password. Try with another..',
+        icon: 'error',
+        confirmButtonText: 'Ok!'
+    })
+</script>
+{{/if}}
+{{#if logout}}
+<script>
+     Swal.fire({
+        title: 'You are successfully logout!',
+        icon: 'success',
+        confirmButtonText: 'Ok!'
+    })
+</script>
+{{/if}}
+{{#if loginFirst}}
+<script>
+     Swal.fire({
+        title: 'Please Login First!',
+        text:'your not login to server please login then access the page.',
+        icon: 'info',
+        confirmButtonText: 'Ok!'
+    })
+</script>
+{{/if}}
+{{#if newRegister}}
+<script>
+     Swal.fire({
+        title: 'Register success full!',
+        text:'Please login first,using your password and email id.',
+        icon: 'success',
+        confirmButtonText: 'Ok!'
+    })
+</script>
+{{/if}}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {{> navbar loginUser=loginUser}}
+    <section>
+        <div class="container-fluid pb-5">
+            {{> userBar}}
+
+            <div class="container userSection">
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <h4>Payment type</h4>
+                        <h4 class="text-muted">Cash on delivery : <input type="radio" name="payment" id="offline"></h4>
+                        <h4 class="text-muted">Online payment : <input type="radio" name="payment" id="online"></h4>
+                    </div>
+
+                    <div class="col-md-9">
+                        <div class="card mb-3 px-3">
+                            <h4>Name : {{loginUser.name}}</h4>
+                            <h4>Phone number : {{loginUser.phone}}</h4>
+                            <h4>Delivery address : {{loginUser.address}}</h4>
+                        </div>
+                        <div class="card">
+                            <div class="card-body cart-body"></div>
+                            <div id="orderPlaced"></div>
+
+                            <div class="text-right">
+                                <button onclick="call()" class="main-btn order-btn">Order now !!</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
+
+<script>
+    let url = window.location.href;
+    let urlArray = url.split("/");
+
+
+    function call() {
+        if (localStorage.length != 0 != 0) {
+            var paymentType = '';
+            if (document.getElementById('offline').checked)
+                paymentType = 'cash on delivery';
+            else if (document.getElementById('online').checked)
+                paymentType = 'online';
+            else {
+                Swal.fire({
+                    title: 'Please select payment type',
+                    icon: 'info',
+                    confirmButtonText: 'Ok!'
+                })
+                return;
+            }
+
+
+
+
+            $.ajax({
+                type: 'POST',
+                url: '/orderNowFromBasket',
+                data: ({ data: localStorage.getItem('cart'), paymentType: paymentType }),
+                success: function (data) {
+                    localStorage.clear();
+
+                    console.log(document.getElementById("orderPlaced"))
+                    document.getElementById("orderPlaced").innerHTML = `<div class="text-success px-3">Your order is successfully placed...</div>`;
+
+                },
+                error: function (data) {
+                    Swal.fire({
+                        title: 'Error Ocured!!',
+                        text: 'This order is not placed something wrong. sorry for issue...',
+                        icon: 'error',
+                        confirmButtonText: 'Ok!'
+                    })
+                },
+            })
+        } else {
+            location.assign('/user/orderFood')
+        }
+    }
+
+</script>

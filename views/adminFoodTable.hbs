@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {{>navbar loginUser=loginUser}}
+
+    <section>
+        <div class="container-fluid">
+            <div class="">
+                <div class="row">
+                    <div class="col-md-3 ">
+                        <!-- sidebar -->
+                        {{>sidebar}}
+                    </div>
+                    <div class="col-md-9">
+                        <div class="adminPanel card">
+                            <div class="text-center mt-1 mb-2">
+                                <h4><span class="primary-color">FOODIES</span> Menu Card.</h4>
+                            </div>
+                            <table class="table table-striped">
+                                <thead class="">
+                                    <tr >
+                                        <th scope="col">Photo</th>
+                                        <th scope="col">Dish Name</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Discount</th>
+                                        <th scope="col">C. time</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {{#each foods}}
+                                    <tr class="">
+
+                                        <td scope="row"><img style="width:65px;height:65px;border-radius:50%"
+                                                src="/static/dishImage/{{this.photo}}" alt=":("></td>
+                                        <td>{{this.dname}}</td>
+                                        <td>{{this.dprice}}</td>
+                                        <td>{{this.ddiscount}}</td>
+                                        <td>{{this.dtime}}</td>
+                                        <td>
+                                            <button onclick="editDish('{{this._id}}')" class="btn btn-sm btn-warning">Edit</button>
+                                            <button onclick="deleteDish('{{this._id}}')"
+                                                class="btn btn-sm btn-danger">Remove</button>
+                                        </td>
+
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+
+
+                        </div>
+
+
+                        <nav aria-label="Page navigation example " class="mt-3 mb-5">
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item">
+                                    <a class="page-link {{#ifprev currentPage}}{{/ifprev}}"
+                                        href="/admin/dishMenus/{{#prevPage currentPage}}{{/prevPage}}"
+                                        aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                {{#times count}}
+                                <li class="page-item {{#active this currentPage}}{{/active}}"><a class="page-link"
+                                        href="/admin/dishMenus/{{this}}">{{this}}</a></li>
+                                {{/times}}
+                                <li class="page-item">
+                                    <a class="page-link {{#ifnext currentPage count}}{{/ifnext}}"
+                                        href="/admin/dishMenus/{{#nextPage currentPage}}{{/nextPage}}"
+                                        aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+</html>
+
+<script>
+    function editDish(id){
+        location.assign("/admin/editDish/"+id+"/false")
+    }
+    function deleteDish(id) {
+        Swal.fire({
+            title: 'Are you sure delete the dish ?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+            customClass: {
+                actions: 'my-actions',
+                cancelButton: 'order-1 right-gap',
+                confirmButton: 'order-2',
+                denyButton: 'order-3',
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                location.assign("/admin/deleteDish/" + id)
+            } else if (result.isDenied) {
+                Swal.fire('Delete process cancel..', '', 'info')
+            }
+        })
+    }
+
+</script>
+
+{{#if delete}}
+<script>
+    Swal.fire({
+        title: 'Dish deleted!',
+        text: 'Dish is rermoved from menu card.',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+    })
+</script>
+{{/if}}

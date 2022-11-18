@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  {{>navbar loginUser=loginUser}}
+
+    <section>
+        <div class="container-fluid">
+            <div class="">
+                <div class="row">
+                    <div class="col-md-3">
+                       <!-- sidebar -->
+                       {{>sidebar}}
+                    </div>
+                    <div class="col-md-9">
+                        <div class="adminPanel card">
+                            <div class="text-center my-1">
+                                <h4><span class="primary-color">FOODIES</span> Dashboard</h4>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card mt-1">
+                                        <div class="text-center">
+                                            <img style="width:130px;height:130px;border-radius:50%" src="/static/image/img/d2.jpg" alt="">
+                                            <h3 class="my-2 primary-color">Food Delivered</h3>
+                                            <h2 class="primary-color mb-0 pb-2">4352+</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card mt-1">
+                                        <div class="text-center">
+                                            <img style="width:130px;height:130px;border-radius:50%" src="/static/image/img/chef.jpg" alt="">
+                                            <h3 class="my-2 primary-color">Our Master Chef</h3>
+                                            <h2 class="primary-color mb-0 pb-2">52+</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card mt-1">
+                                        <div class="text-center">
+                                            <img style="width:130px;height:130px;border-radius:50%" src="/static/image/img/pizza.jpg" alt="">
+                                            <h3 class="my-2 primary-color">Available Foods</h3>
+                                            <h2 class="primary-color mb-0 pb-2">432+</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card mt-1">
+                                        <div class="text-center">
+                                            <img style="width:130px;height:130px;border-radius:50%" src="/static/image/img/d1.jpg" alt="">
+                                            <h3 class="my-2 primary-color">Fast Delivery</h3>
+                                            <h2 class="primary-color mb-0 pb-2">42+</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>

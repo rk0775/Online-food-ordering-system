@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {{> navbar loginUser=loginUser}}
+    <section>
+        <div class="container-fluid pb-5">
+            {{> userBar}}
+
+            <div class="container userSection">
+                <div class="text-center mb-1">
+                    <h4><span class="primary-color">FOODIES</span> Current Order.</h4>
+                </div>
+                <div class="row">
+                    {{#each orderFood}}
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-md-4 offset-md-2">
+                                <img style="height:200px" src="/static/dishImage/{{this.photo}}" class="img-fluid p-3"
+                                    alt="">
+                            </div>
+                            <div class="col-md-6 py-3">
+                                <h5 class="primary-color">Order_id : {{this._id}}</h5>
+                                <h4>Dish name : {{this.dname}}</h4>
+                                <h4>Price : <i class="fa fa-usd"></i>{{this.price}}</h4>
+                                <h4>Quantity : {{this.quantity}}</h4>
+                                <h4>States :{{this.states}} </h4>
+                                <div class="text-right">
+                                    {{#ifCancelOrder this.states this._id}}{{/ifCancelOrder}}
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    {{/each}}
+                    {{#if orderFood}}
+                    {{else}}
+                    <div class="text-center my-5">
+                        <h2 class="primary-color">Current order not present...</h2>
+                    </div>
+                    {{/if}}
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
+
+{{#if cancelOrder}}
+<script>
+    Swal.fire({
+        title: 'Order cancel',
+        text: 'Order is canceled successfully,...',
+        icon: 'success',
+        confirmButtonText: 'Ok!'
+    })
+</script>
+
+{{/if}}

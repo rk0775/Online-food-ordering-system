@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Dish</title>
+</head>
+
+<body>
+    {{>navbar loginUser=loginUser}}
+
+    <section>
+        <div class="container-fluid">
+            <div class="">
+                <div class="row">
+                    <div class="col-md-3">
+                        <!-- sidebar -->
+                        {{>sidebar}}
+                    </div>
+                    <div class="col-md-9 ">
+                        <div class="adminPanel card">
+                            <div class="text-center my-1">
+                                <h4><span class="primary-color">FOODIES</span> Edit Dish.</h4>
+                            </div>
+                            <div class="mb-4 mt-2 mx-2">
+                                <form action="/admin/saveEditDish/{{food._id}}" method="post"
+                                    enctype="multipart/form-data">
+
+                                    <div class="row shadow mx-5">
+
+                                        <div class="col-md-4">
+                                            <img src="/static/dishImage/{{food.photo}}" class="img-fluid py-3" alt="">
+                                            <label class="my-2" for="photo">Food Pic : </label>
+                                            <input type="hidden" value="{{food.photo}}" name="tempImage">
+                                            <input type="file" value="{{food.photo}}" name="photo" id="photo">
+                                        </div>
+                                        <div class="col-md-8 ">
+
+                                            <input value="{{food.dname}}" name="dname" type="text"
+                                                class="my-2 form-control" placeholder="Enter dish name">
+                                            <input value="{{food.dtype}}" name="dtype" type="text"
+                                                class="my-2 form-control" placeholder="Enter dish type">
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <input value="{{food.dprice}}" name="dprice" type="text"
+                                                        class="my-2 form-control" placeholder="Enter dish price">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input value="{{food.dserve}}" name="dserve" type="text"
+                                                        class="my-2 form-control"
+                                                        placeholder="Enter dish serve contity..">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <input value="{{food.dtime}}" name="dtime" type="text"
+                                                        class="my-2 form-control" placeholder="Enter required time">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input value="{{food.ddiscount}}" name="ddiscount" type="text"
+                                                        class="my-2 form-control" placeholder="Enter discount ..."
+                                                        min="0" max="100">
+                                                </div>
+                                            </div>
+
+
+
+                                            <textarea class="my-2 form-control" name="discription" id="" cols="30"
+                                                rows="4">{{food.discription}}</textarea>
+                                            <div class="text-right">
+                                                <button class="main-btn my-2 mx-2">Edit Food</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+</body>
+
+</html>
+<script>
+    let urlSplit = window.location.href.split('/');
+    const action = urlSplit[urlSplit.length - 1]
+    if (action == 'success') {
+        Swal.fire({
+            title: 'Dish is updated !!',
+            text: 'Your Dish is successfully updated..',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        })
+    } else if (action == 'error') {
+        Swal.fire({
+            title: 'Something is wrong!',
+            text: 'Please fill the important information. dish is not updated',
+            icon: 'error',
+            confirmButtonText: 'Cancel'
+        })
+    }
+
+</script>

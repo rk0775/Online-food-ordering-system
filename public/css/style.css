@@ -1,0 +1,293 @@
+:root{
+    --primary-color:#A82c48;
+    --secondary-color:#43121d;
+    --white-color:#fff;
+    --text-color:#555;
+    
+}
+.primary-color{
+    color:var(--primary-color)
+}
+.text-color{
+    color:var(--text-color)
+}
+*,
+*:after,
+*:before{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+:active,
+:hover,
+:focus{
+    outline-offset: 0;
+    outline: 0;
+}
+
+a,
+a:hover{
+    text-decoration: none;
+}
+a:hover{
+    color: var(--primary-color);
+}
+
+ul,
+ol{
+    margin: 0;
+    padding:0;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-size: 100%;
+    font-weight: 400;
+}
+input:focus{
+    border:1px solid var(--primary-color) !important;
+    box-shadow: 0px 0px 1px var(--primary-color) inset,0px 0px 8px var(--primary-color) !important;
+}
+/* custome scrollbar*/
+::-webkit-scrollbar{
+    width:0.625rem;
+}
+::-webkit-scrollbar-track{
+    background:var(--white-color);
+}
+::-webkit-scrollbar-thumb{
+    background:var(--primary-color);
+}
+
+
+h1{
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 3rem;
+    color:var(--secondary-color);
+}
+h2{
+    font-size: 2.25rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 3rem;
+    color:var(--secondary-color);
+    line-height: 3rem;
+}
+h4{
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+    color:var(--secondary-color);
+}
+h5{
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+    color:var(--primary-color);
+}
+p{
+    font-size:1rem;
+    color:var(--text-color);
+    font-weight: 390;
+    line-height: 1.75rem;
+    letter-spacing: 1px;
+}
+
+.main-btn{
+    display: inline-block;
+    padding:0.625rem 1.875rem;
+    line-height: 1.50rem;
+    background-color: var(--primary-color);
+    border:0.1856rem solid var(--primary-color);
+    color:var(--white-color);
+    font-size:0.9175rem;
+    font-weight:600;
+    text-transform: capitalize;
+    box-shadow: 0px 2px 10px -1px rgb(0,0,0 / 19%);
+    -webkit-transition: all .4s ease-out 0s;
+}
+
+.white-btn{
+    padding:0.625rem 1.875rem;
+    line-height: 1.5625rem;
+    background: rgba(255,255,255,0.20);
+    border:none;
+    color:var(--text-color);
+    font-size:0.9375rem;
+    font-weight:600;
+    text-transform: capitalize;
+    box-shadow: 0px 2px 10px -1px rgb(212, 210, 210);
+    -webkit-transition: all .4s ease-out 0s;
+    transition:all .4s ease-out 0s ;
+}
+.white-btn2{
+    padding:0.355rem 1.875rem;
+    line-height: 1.5625rem;
+    background: rgba(255,255,255,0.20);
+    border:1px solid var(--primary-color);
+    color:var(--text-color);
+    font-size:0.9375rem;
+    font-weight:600;
+    text-transform: capitalize;
+    box-shadow: 0px 2px 10px -1px rgb(212, 210, 210);
+    -webkit-transition: all .4s ease-out 0s;
+    transition:all .4s ease-out 0s ;
+}
+
+
+.main-btn:hover{
+    background-color: transparent;
+    color:var(--primary-color)
+}
+
+.wrapper{
+    padding-top: 8.25rem;
+    padding-bottom :8.25rem;
+}
+.nav-item{
+    margin-left: 15px;
+}
+.nav-link{
+    text-transform: capitalize;
+    color:var(--primary-color);
+    font-size:1rem;
+    font-weight: 600;
+    cursor: poniter;
+    letter-spacing: 1px;
+}
+.navbar .main-btn{
+    padding: 0.3125rem 1.4375rem;
+}
+
+.top-banner{
+    width:100%;
+    background: url('../image/bg/bg-1.jpg') no-repeat  center;
+    background-size: cover;
+    padding:11rem 0 6rem;
+}
+
+
+.counter-section{
+    background-color: var(--primary-color);
+    padding: 2.5rep 0;
+    margin-top: 3px;
+}
+.counter-section p{
+    color:var(--white-color);
+    text-transform: capitalize;
+    margin-top:-40px;
+}
+.counter-section h2{
+    color:var(--white-color);
+    text-transform: capitalize;
+    margin-top:20px;
+}
+
+.checks{
+    margin:25px 0 25px 10%;
+}
+.fa-check{
+    color:var(--primary-color);
+}
+#exploreFood{
+    color:var(--text-color);
+    
+}
+#testinomial{
+    background-color: var(--primary-color);
+    margin:100px 0;
+    padding: 25px 25px;
+}
+#testinomial h4{
+    color: var(--white-color);
+}
+#subscription input{
+    padding: 2px;
+    font-size: 24px;
+}
+#subscription .main-btn{
+    padding: 6px 30px;
+}
+#footer{
+    background-color: var(--primary-color);
+    margin-top: 9rem;
+}
+#footer a{
+    color:var(--white-color);
+    margin:10px 20px;
+}
+
+/*Register form*/
+.register-banner{
+    background: url('../image/bg/bg-1.jpg') no-repeat  center;
+    background-size: cover;
+    padding:7rem 0px 2rem 0px;
+}
+.register-form{
+    background: transparent;
+    width:100%;
+    height: auto;
+    border:2px solid var(--primary-color);
+}
+.text-right{
+    display: flex;
+    justify-content: end;
+}
+
+/*sidebar*/
+.sidebar{
+    position: fixed;
+    background-color: var(--primary-color);
+    border:1px solid var(--primary-color);
+    color:var(--white-color);
+    height: 130vh;
+    width:23%;
+    padding-top:8rem;
+}
+.adminPanel{
+    border:1px solid var(--primary-color);
+    margin-top:4.8085rem;
+}
+.letter-spacing{
+    letter-spacing: 1px;
+
+}
+.shadow{
+    padding: 1rem ;
+    box-shadow: 4px 3px 5px var(--primary-color),0px -3px 5px var(--primary-color);
+}
+.search-panel{
+    margin-top:7rem;
+}
+.page-link{
+    background-color: var(--primary-color);
+    color:var(--white-color)
+}
+
+
+.userNavBar{
+    margin: 4.8085rem 0rem;
+    background-color: var(--primary-color);
+    color:var(--white-color);
+
+
+    
+}
+.userNavBar a{
+    color:var(--white-color);
+    margin: 0 1rem;
+}
+.navbar{
+    padding: 0%;
+}
+.states-btn{
+    width: 100%;
+}

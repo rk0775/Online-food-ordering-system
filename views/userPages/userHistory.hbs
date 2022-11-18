@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {{> navbar loginUser=loginUser}}
+    <section>
+        <div class="container-fluid pb-5">
+            {{> userBar}}
+            <div class="container">
+
+                <div class="card p-md-4">
+                    <div class="text-center mb-3">
+                        <h4><span class="primary-color">FOODIES</span> history.</h4>
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                            <td>Pic</td>
+                            <td>Dish Name</td>
+                            <td>Time</td>
+                            <td>Price</td>
+                            <td>Quantity</td>
+                            <td>Payment Type</td>
+                            <td>States</td>
+                        </thead>
+                        <tbody>
+                            {{#each history}}
+                            <tr>
+                                <td>
+                                    <img style="width:50px;height:50px;border-radius:50%"
+                                        src="/static/dishImage/{{this.photo}}" alt="">
+                                </td>
+                                <td>{{this.dname}}</td>
+                                <td>{{this.time}}</td>
+                                <td>{{this.price}}</td>
+                                <td>{{this.quantity}}</td>
+                                <td>{{this.paymentType}}</td>
+                                <td>{{this.states}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+
+        </div>
+    </section>
+</body>
+
+</html>
